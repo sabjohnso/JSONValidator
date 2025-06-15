@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python3
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --upgrade python3
+          sudo apt-get install pipx
+          pipx install poetry
+          poetry --version
+          poetry install
+      - name: pre-commit
+        shell: bash
+        run: |
+          poetry run pre-commit run --all
+      - name: test
+        shell: bash
+        run: |
+          poetry run pytest
