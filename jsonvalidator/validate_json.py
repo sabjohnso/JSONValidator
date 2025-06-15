@@ -71,7 +71,7 @@ def make_command_line_parser(prog: str) -> ArgumentParser:
     Return a parser for the command line
     """
 
-    parser = ArgumentParser(prog=prog)
+    parser = ArgumentParser(prog=Path(prog).name)
 
     parser.add_argument(
         "--data-path",
