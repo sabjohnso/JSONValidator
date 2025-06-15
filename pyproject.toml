@@ -13,12 +13,14 @@ dependencies = [
 
 ]
 
+[project.scripts]
+validate-json = "jsonvalidator:validate_json_app"
+
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.scripts]
-my-script = "jsonvalidator:validate_json_app"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.16.0"
