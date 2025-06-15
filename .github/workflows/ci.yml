@@ -26,8 +26,8 @@ jobs:
       - name: pre-commit
         shell: bash
         run: |
-          poetry run pre-commit run --all
+          poetry run pre-commit run --all --color always
       - name: test
         shell: bash
         run: |
-          poetry run pytest
+          poetry run pytest --color yes
